@@ -1,5 +1,5 @@
 import pandas as pd
-from utils import(clean_columns,remove_duplicates,create_profit_margin)
+from utils import(clean_columns,remove_duplicates,round)
 
 import os
 
@@ -11,7 +11,9 @@ df = pd.read_csv("data/raw/superstore.csv", encoding="latin1")
 # Transformar
 df = clean_columns(df)
 df = remove_duplicates(df)
-df = create_profit_margin(df)
+df = round(df, "sales", 2)
+df = round(df, "discount", 2)
+df = round(df, "profit", 2)
 
 #Carregar
 df.to_csv('data/processed/superstore_clean.csv', index=False)

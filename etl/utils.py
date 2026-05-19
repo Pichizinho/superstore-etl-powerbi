@@ -10,6 +10,6 @@ def clean_columns(df):
 def remove_duplicates(df):
     return df.drop_duplicates()
 
-def create_profit_margin(df):
-    df['profit_margin'] = df['profit']/df['sales']
+def round(df, column, decimals=2):
+    df[column] = df[column].astype(float).round(decimals)
     return df
